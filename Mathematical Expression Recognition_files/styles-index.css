@@ -1,0 +1,38 @@
+* { margin:0; padding:0; }
+body { background-color:#EEE; }
+h1,h2,h3,h4,h5 { font-family:sans-serif; font-weight:normal; }
+#header, #main-wrapper { text-align:center; }
+#sections { padding:0 1em; }
+#sections ul, #sections ol { margin-left:2em; }
+#sections p { margin-bottom:0.5em; }
+.section  { margin-bottom:1em; }
+#menu-nav li { display:inline; margin:0 0.5em; }
+
+#main-wrapper { margin:1em 0; background-color:#FFF; border-top:1px dashed #DDD; border-bottom:1px dashed #DDD; }
+/*#main { width:480px; margin:auto; }*/
+.app { margin:0.5em auto; }
+.eq { min-height:170px; }
+#loading { height:70px; text-align:center; }
+#loading img { margin-top:45px; }
+.result { font-size:200%; }
+#query { font-size:50%; padding:0.5em; } /* 50% of parent container (.result), so it should render as normal size. */
+.draw { width:480px; margin:auto; margin-bottom:3em; }
+#drawhere { position:relative; top:-50px; z-index:1; float:right; }
+#drawing-canvas { position:relative; z-index:2; border:1px solid #000; }
+
+
+/*#publications li { font-size:85%; }*/
+.controls { overflow:auto; }
+.controls * { vertical-align:middle; }
+.controls a { height:20px; font-family:sans-serif; font-weight:bold; font-size:0.85em; padding-left:20px; margin-right:5px; text-decoration:none; }
+a#clear { background:url(cross.png) no-repeat scroll 2px 1px #FFFFFF; color:red; }
+a#send { background:url(submit.png) no-repeat scroll 2px 1px #FFFFFF; color:green; }
+a#undo { background:url(previous.png) no-repeat scroll 2px 1px #FFFFFF; color:blue; }
+a#redo { background:url(next.png) no-repeat scroll 2px 1px #FFFFFF; color:blue; }
+
+#footer { background-color:#FFF; border-top:1px dashed #DDD; padding:2em; font-family:sans-serif; font-size:80%; }
+.fl { float:left; }
+.fr { float:right; }
+.inline { display:inline; }
+
+#trainer { margin:0.5em 0; }
