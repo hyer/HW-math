@@ -15,8 +15,11 @@ $(function () {
 
     var $canvas = $('#drawing-canvas').sketchable({
         graphics: {
-            strokeStyle: "red",
-            firstPointSize: 0.5
+            strokeStyle: "black",
+            firstPointSize: 0.5,
+            lineWidth: 5,
+            lineJoin: "round",
+            lineCap: 'round'
         }
     });
 
