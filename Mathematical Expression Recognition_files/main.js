@@ -1,4 +1,20 @@
 $(function () {
+    function post(URL, PARAMS) {
+        var temp = document.createElement("form");
+        temp.action = URL;
+        temp.method = "post";
+        temp.style.display = "none";
+        for (var x in PARAMS) {
+            var opt = document.createElement("textarea");
+            opt.name = x;
+            opt.value = PARAMS[x];
+            // alert(opt.name)
+            temp.appendChild(opt);
+        }
+        document.body.appendChild(temp);
+        temp.submit();
+        return temp;
+    }
 
     function transform(strokes) {
         for (var i = 0; i < strokes.length; ++i)
@@ -31,49 +47,55 @@ $(function () {
     function submitStrokes() {
         var $submit = $('a#send'), $latex = $('#eq-latex'), $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
+        console.log(strokes);
         // Submit strokes in the required format.
         strokes = transform(strokes);
+        post('pages/statisticsJsp/excel.action', {html :123, cm1:'sdsddsd', cm2:'haha'});
 
-        var postdata = {strokes: JSON.stringify(strokes)};
-        if (urlParam("train")) {
-            postdata.label = $('#train').val();
-            postdata.user = urlParam("user");
-        }
-        $.ajax({
-            url: "eq.php",
-            type: "POST",
-            data: postdata,
-            beforeSend: function (xhr) {
-                $submit.hide();
-                var loading = '<div id="loading"> \
-                          <img class="inline" src="css/funnel.gif"/> \
-                          <h2 class="inline">Recognizing...</h2> \
-                          <h4>This might take a while.</h4> \
-                         </div>';
-                $('.eq').prepend(loading);
-                $latex.empty();
-                $render.empty();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('.eq').html('<h2>' + textStatus + '</h2><p>' + errorThrown + '</p>');
-            },
-            success: function (data, textStatus, jqXHR) {
-                if (!data) {
-                    $('.eq').html('<h2>Server not available.</h2><p>Please try again later. We apologize for the inconvenience.</p>');
-                    return false;
-                }
-                $submit.show();
-                $('#loading').remove();
-                var asurl = encodeURIComponent(data);
-                var query = '<p id="query">Search this in \
-            <a target="_blank" href="https://www.google.es/search?q=' + asurl + '">Google</a> \
-            or in <a target="_blank" href="https://www.wolframalpha.com/input/?i=' + asurl + '">Wolfram|Alpha</a>.';
-                $latex.html(data + '<br/>' + query);
-                $render.html('\\[' + data + '\\]');
-                MathJax.Hub.Typeset();
-            }
-        });
-    };
+
+        // var postdata = {strokes: JSON.stringify(strokes)};
+        // if (urlParam("train")) {
+        //     postdata.label = $('#train').val();
+        //     postdata.user = urlParam("user");
+        // }
+        // $.ajax({
+        //     url: "eq.php",
+        //     type: "POST",
+        //     data: postdata,
+        //     beforeSend: function (xhr) {
+
+        //         // $submit.hide(); // send 按鈕
+        //         var loading = '<div id="loading"> \
+        //                   <h2 class="inline">Sending...</h2> \
+        //                   <h4>This might take a while.</h4> \
+        //                  </div>';
+        //         $('.eq').prepend(loading);
+        //         $latex.empty();
+        //         $render.empty();
+        //     },
+        //     error: function (jqXHR, textStatus, errorThrown) {
+        //         $('.eq').html('<h2>' + textStatus + '</h2><p>' + errorThrown + '</p>');
+        //     },
+        //     success: function (data, textStatus, jqXHR) {
+        //
+        //         // $submit.show();
+        //         $('#loading').remove();
+        //         if (!data) {
+        //             $('.eq').html('<h2>Server not available.</h2><p>Please try again later. We apologize for the inconvenience.</p>');
+        //             return false;
+        //         }
+        //
+        //         var asurl = encodeURIComponent(data);
+        //         var query = '<p id="query">Search this in \
+        //             <a target="_blank" href="https://www.google.es/search?q=' + asurl + '">Google</a> \
+        //             or in <a target="_blank" href="https://www.wolframalpha.com/input/?i=' + asurl + '">Wolfram|Alpha</a>.';
+        //         $latex.html(data + '<br/>' + query);
+        //         $render.html('\\[' + data + '\\]');
+        //         MathJax.Hub.Typeset();
+        //     }
+        // });
+        return true;
+    }
 
     $('a#clear').on("click", function (e) {
         e.preventDefault();
