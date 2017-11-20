@@ -17,9 +17,9 @@ $(function () {
         graphics: {
             strokeStyle: "black",
             firstPointSize: 0.5,
-            lineWidth: 5,
-            lineJoin: "round",
-            lineCap: 'round'
+            lineWidth: 3,
+            // lineJoin: "round",
+            lineCap: "round"
         }
     });
 
@@ -33,6 +33,7 @@ $(function () {
         var strokes = $canvas.sketchable('strokes');
         // Submit strokes in the required format.
         strokes = transform(strokes);
+
         var postdata = {strokes: JSON.stringify(strokes)};
         if (urlParam("train")) {
             postdata.label = $('#train').val();
