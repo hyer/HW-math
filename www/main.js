@@ -50,7 +50,7 @@ $(function () {
         console.log(strokes);
         // Submit strokes in the required format.
         strokes = transform(strokes);
-        post('pages/statisticsJsp/excel.action', {html :123, cm1:'sdsddsd', cm2:'haha'});
+        //post('pages/statisticsJsp/excel.action', {html :123, cm1:'sdsddsd', cm2:'haha'});
 
 
         // var postdata = {strokes: JSON.stringify(strokes)};
