@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5 {
 }
 
 #header, #main-wrapper {
+    margin: 2em 0;
     text-align: center;
 }
 
@@ -38,13 +39,13 @@ h1, h2, h3, h4, h5 {
 }
 
 #main-wrapper {
-    margin: 1em 0;
+    margin: 3em 0;  /*输入框与标题的距离*/
     background-color: #FFF;
     border-top: 1px dashed #DDD;
     border-bottom: 1px dashed #DDD;
 }
 
-/*#main { width:480px; margin:auto; }*/
+/*#main { width:800px; margin:auto; }*/
 .app {
     margin: 0.5em auto;
 }
@@ -72,10 +73,12 @@ h1, h2, h3, h4, h5 {
 }
 
 /* 50% of parent container (.result), so it should render as normal size. */
+
 .draw {
+    margin-top: 3em;
     width: 480px;
-    margin: auto;
-    margin-bottom: 3em;
+    /*margin: auto;*/
+    margin-bottom: 5em;
 }
 
 #drawhere {
@@ -86,26 +89,35 @@ h1, h2, h3, h4, h5 {
 }
 
 #drawing-canvas {
-    position: relative;
+    /*position: relative;*/
+    margin-left:-15em;
+    /*margin: auto;*/
     z-index: 2;
-    border: 2px solid #595959;
+    border: 2px solid #dadada;
 }
 
 /*#publications li { font-size:85%; }*/
 .controls {
-    overflow: auto;
+    /*overflow: auto;*/
+    /*position: relative;*/
+    /*margin-right:10px;*/
+    position:absolute;
+    right:1px;
+    width:800px;
 }
 
 .controls * {
     vertical-align: middle;
+    /*position: relative;*/
+
 }
 
 .controls a {
     height: 20px;
-    font-family: sans-serif;
+    font-family: Monaco;
     font-weight: bold;
-    font-size: 0.85em;
-    padding-left: 20px;
+    font-size: 1em;
+    padding-left: 30px;
     margin-right: 5px;
     text-decoration: none;
 }

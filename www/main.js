@@ -13,7 +13,7 @@ $(function () {
         }
         document.body.appendChild(temp);
         temp.submit();
-        return temp;
+        return null;
     }
 
     function transform(strokes) {
@@ -45,12 +45,33 @@ $(function () {
     };
 
     function submitStrokes() {
-        var $submit = $('a#send'), $latex = $('#eq-latex'), $render = $('#eq-render');
+        //var $submit = $('a#send'), $latex = $('#eq-latex'), $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
         console.log(strokes);
         // Submit strokes in the required format.
-        strokes = transform(strokes);
-        //post('pages/statisticsJsp/excel.action', {html :123, cm1:'sdsddsd', cm2:'haha'});
+        //strokes = transform(strokes);
+        //traces = [];
+        //for (var i = 0; i < strokes.length; ++i)
+        //    traces.append(strokes[i])
+        //post('http://192.168.46.123:8900/send_pts/', {"user" :"hyer", "traces":traces});
+        var submit_sync = function () {
+            $.ajax({
+                type: 'POST',
+                url: "http://192.168.46.123:8900/send_pts/",
+                //contentType: "application/json; charset=utf-8",  //# 不需要！！！
+                dataType: "json",  // 这一条表示返回值的类型，不必须，且依据返回值类型而定。
+                async: false,
+                crossDomain:true,
+                // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
+                // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
+                data: JSON.stringify({"traces" : strokes}),
+
+                success: function (jsonResult) {
+                    alert(jsonResult);
+                }
+            });
+        }
+        submit_sync();
 
 
         // var postdata = {strokes: JSON.stringify(strokes)};
@@ -63,7 +84,7 @@ $(function () {
         //     type: "POST",
         //     data: postdata,
         //     beforeSend: function (xhr) {
-
+        //
         //         // $submit.hide(); // send 按鈕
         //         var loading = '<div id="loading"> \
         //                   <h2 class="inline">Sending...</h2> \
