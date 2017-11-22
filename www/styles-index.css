@@ -98,12 +98,12 @@ h1, h2, h3, h4, h5 {
 
 /*#publications li { font-size:85%; }*/
 .controls {
-    /*overflow: auto;*/
-    /*position: relative;*/
+    overflow: auto;
+    position: relative;
     /*margin-right:10px;*/
-    position:absolute;
-    right:1px;
-    width:800px;
+    /*position:absolute;*/
+    /*right:1px;*/
+    /*width:800px;*/
 }
 
 .controls * {
