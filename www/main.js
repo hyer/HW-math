@@ -60,7 +60,7 @@ $(function () {
                 url: "http://192.168.46.123:8900/send_pts/",
                 //contentType: "application/json; charset=utf-8",  //# 不需要！！！
                 dataType: "json",  // 这一条表示返回值的类型，不必须，且依据返回值类型而定。
-                async: false,
+                async: true,
                 crossDomain:true,
                 // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
                 // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
