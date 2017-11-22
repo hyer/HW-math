@@ -118,25 +118,25 @@ $(function () {
         return true;
     }
 
-    $('a#clear').on("click", function (e) {
-        e.preventDefault();
-        clearStrokes();
-    });
+    //$('a#clear').on("click", function (e) {
+    //    e.preventDefault();
+    //    clearStrokes();
+    //});
+    //
+    //$('a#send').on("click", function (e) {
+    //    e.preventDefault();
+    //    submitStrokes();
+    //});
 
-    $('a#send').on("click", function (e) {
-        e.preventDefault();
-        submitStrokes();
-    });
-
-    $('a#undo').on("click", function (e) {
-        e.preventDefault();
-        $canvas.sketchable('undo');
-    });
-
-    $('a#redo').on("click", function (e) {
-        e.preventDefault();
-        $canvas.sketchable('redo');
-    });
+    //$('a#undo').on("click", function (e) {
+    //    e.preventDefault();
+    //    $canvas.sketchable('undo');
+    //});
+    //
+    //$('a#redo').on("click", function (e) {
+    //    e.preventDefault();
+    //    $canvas.sketchable('redo');
+    //});
 
 
 
@@ -144,12 +144,21 @@ $(function () {
         e.preventDefault();
         clearStrokes();
     });
-    //$("#myButton").click(function(){
-    //        $(this).button('loading').delay(1000).queue(function() {
-    //            $(this).button('complete');
-    //            $(this).dequeue();
-    //        });
-    //});
+
+    $('#send').click(function (e) {
+        e.preventDefault();
+        submitStrokes();
+    });
+
+    $('#undo').click(function (e) {
+        e.preventDefault();
+        $canvas.sketchable('undo');
+    });
+
+    $('#redo').click(function (e) {
+        e.preventDefault();
+        $canvas.sketchable('redo');
+    });
 
 
 
