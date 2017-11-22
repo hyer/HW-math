@@ -14,6 +14,8 @@
 
     <link type="text/css" rel="stylesheet" media="all"
           href="./styles-index.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" async="" src="./ga.js"></script>
     <script type="text/javascript" src="./console.js"></script>
@@ -888,6 +890,9 @@
         border: 1px solid
     }
     </style>
+
+
+
 </head>
 
 <body>
@@ -913,11 +918,13 @@
         <div class="app draw">
             <canvas id="drawing-canvas" width="950" height="400"></canvas>
             <div class="controls">
-                <a href="http://cat.prhlt.upv.es/mer/#" id="clear" class="btn fl">CLEAR</a>
+                <!--<a href="http://cat.prhlt.upv.es/mer/#" id="clear" class="btn fl">CLEAR</a>-->
+
+                <button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button" class="btn btn-warning">警告按钮</button>
+
                 <a href="http://cat.prhlt.upv.es/mer/#" id="send" class="btn fl">SEND</a>
                 <a href="http://cat.prhlt.upv.es/mer/#" id="undo" class="btn fl">UNDO</a>
                 <a href="http://cat.prhlt.upv.es/mer/#" id="redo" class="btn fl">REDO</a>
-                <button href="http://cat.prhlt.upv.es/mer/#" class="btn btn-warning">Clear</button>
             </div>
             <!-- <img id="drawhere" alt="Draw here!" src="./drawhere.png"> -->
         </div><!-- app -->

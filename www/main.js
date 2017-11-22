@@ -138,6 +138,21 @@ $(function () {
         $canvas.sketchable('redo');
     });
 
+
+
+    $('#clear').click(function (e) {
+        e.preventDefault();
+        clearStrokes();
+    });
+    //$("#myButton").click(function(){
+    //        $(this).button('loading').delay(1000).queue(function() {
+    //            $(this).button('complete');
+    //            $(this).dequeue();
+    //        });
+    //});
+
+
+
     if (urlParam("train")) {
         // Shortcut to clear canvas + submit strokes.
         $(document).on("keydown", function (e) {
