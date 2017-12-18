@@ -83,7 +83,7 @@ $(function () {
                     // alert(jsonResult["result_latex"]);
                     // console.log(data);
                     $render.html('\\[' + latex_str + '\\]');
-                    $latex.html(latex_str);
+                    // $latex.html(latex_str);
                     MathJax.Hub.Typeset();
                 }
             });
