@@ -45,7 +45,9 @@ $(function () {
     };
 
     function submitStrokes() {
-        //var $submit = $('a#send'), $latex = $('#eq-latex'), $render = $('#eq-render');
+        //var $submit = $('a#send'),
+        var $latex = $('#eq-latex');
+        var $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
         console.log(strokes);
         // Submit strokes in the required format.
@@ -66,11 +68,26 @@ $(function () {
                 // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
                 data: JSON.stringify({"traces" : strokes}),
 
-                success: function (jsonResult) {
-                    alert(jsonResult);
+                beforeSend: function(xhr) {
+                    $latex.empty();
+                    $render.empty();
+                },
+
+                success: function (jsonResult, textStatus, jqXHR) {
+                    if (!jsonResult) {
+                        $('.eq').html('<h2>Server not available.</h2><p>Please try again later. We apologize for the inconvenience.</p>');
+                        return false;
+                    }
+                    console.log(jsonResult);
+                    latex_str = jsonResult["result_latex"].toString() + '\n';
+                    // alert(jsonResult["result_latex"]);
+                    // console.log(data);
+                    $render.html('\\[' + latex_str + '\\]');
+                    $latex.html(latex_str);
+                    MathJax.Hub.Typeset();
                 }
             });
-        }
+        };
         submit_sync();
 
 
