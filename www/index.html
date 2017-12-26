@@ -9,6 +9,7 @@
     <meta name="Description"
           content="A demo of our award.winning, state-of-the-art Mathematical Expression Recognition system.">
     <meta name="Keywords" content="mer, math, maths, handwriting, recognition">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 
     <title>Mathematical Expression Recognition</title>
 
@@ -26,7 +27,15 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
+    <!--ctrol stroll bar-->
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function(){-->
+            <!--$(document.body).css({-->
+                <!--"overflow-x":"hidden",-->
+                <!--"overflow-y":"hidden"-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
 
     <style type="text/css">.MathJax_Hover_Frame {
         border-radius: .25em;
@@ -939,6 +948,7 @@
 </head>
 
 <body>
+
 <div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;">
     <div id="MathJax_Hidden"></div>
 </div>
@@ -947,6 +957,7 @@
 <div id="header">
     <h1>Mathematical Expression Recognition</h1>
 </div>
+
 
 <div id="main-wrapper">
     <div id="main">
@@ -960,37 +971,59 @@
 
         <div class="app draw">
             <canvas id="drawing-canvas" width="950" height="400"></canvas>
-            <div class="controls">
-                <!--<a href="http://cat.prhlt.upv.es/mer/#" id="clear" class="btn fl">CLEAR</a>-->
-                <!--<a href="http://cat.prhlt.upv.es/mer/#" id="send" class="btn fl">SEND</a>-->
-                <!--<a href="http://cat.prhlt.upv.es/mer/#" id="undo" class="btn fl">UNDO</a>-->
-                <!--<a href="http://cat.prhlt.upv.es/mer/#" id="redo" class="btn fl">REDO</a>-->
 
-                <!--<button href="http://cat.prhlt.upv.es/mer/#" id="undo" type="button" class="btn btn-info btn-lg">undo</button>-->
-                <!--<button href="http://cat.prhlt.upv.es/mer/#" id="redo" type="button" class="btn btn-info btn-lg">redo</button>-->
-                <!--<button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button" class="btn btn-warning btn-lg">clear</button>-->
-                <!--<button href="http://cat.prhlt.upv.es/mer/#" id="send" type="button" class="btn btn-success btn-lg">send</button>-->
+            <div class="container main-wrapper">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="radio-inline">
+                            <input type="radio" name="algo-type" value="seq_nihan" id="seq_nihan">SEQ_NIHAN</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="algo-type" value="seq" id="seq">SEQ</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="algo-type" value="det" id="det">DET</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="algo-type" value="seq_open" id="seq_open">SEQ-OPEN</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="controls">
+                            <div class="btn-group btn-group-lg">
+                                <button href="http://cat.prhlt.upv.es/mer/#" id="undo" type="button"
+                                        class="btn btn-info">undo
+                                </button>
+                                <button href="http://cat.prhlt.upv.es/mer/#" id="redo" type="button"
+                                        class="btn btn-info">redo
+                                </button>
+                            </div>
 
+                            <div class="btn-group btn-group-lg">
+                                <button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button"
+                                        class="btn btn-warning">
+                                    clear
+                                </button>
+                                <button href="http://cat.prhlt.upv.es/mer/#" id="send" type="button"
+                                        class="btn btn-success">send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="btn-group btn-group-lg">
-                    <button href="http://cat.prhlt.upv.es/mer/#" id="undo" type="button" class="btn btn-info">undo
-                    </button>
-                    <button href="http://cat.prhlt.upv.es/mer/#" id="redo" type="button" class="btn btn-info">redo
-                    </button>
                 </div>
 
-                <div class="btn-group btn-group-lg">
-                    <button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button" class="btn btn-warning">
-                        clear
-                    </button>
-                    <button href="http://cat.prhlt.upv.es/mer/#" id="send" type="button" class="btn btn-success">send
-                    </button>
-                </div>
             </div>
         </div><!-- app -->
 
     </div><!--#main-->
+
+
+
 </div><!--#main-wrapper-->
+
+<!--<div id="footer">-->
+    <div class="f-copyright">
+        <p>Copyright 1999-2017 All rights reserved.</p>
+        <p>福建网龙计算机网络信息技术有限公司</p>
+    </div>
+<!--</div>-->
 
 </body>
 </html>

@@ -39,10 +39,11 @@ h1, h2, h3, h4, h5 {
 }
 
 #main-wrapper {
-    margin: 3em 0;  /*输入框与标题的距离*/
+    margin: 3em 0; /*输入框与标题的距离*/
     background-color: #FFF;
     border-top: 1px dashed #DDD;
     border-bottom: 1px dashed #DDD;
+    z-index: 999;
 }
 
 /*#main { width:800px; margin:auto; }*/
@@ -51,7 +52,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .eq {
-    min-height: 100px;
+    min-height: 50px;
 }
 
 #loading {
@@ -104,11 +105,13 @@ h1, h2, h3, h4, h5 {
     /*position:absolute;*/
     /*right:1px;*/
     /*width:800px;*/
+    z-index: 999;
 }
 
 .controls * {
     vertical-align: middle;
     /*position: relative;*/
+    z-index: 999;
 
 }
 
@@ -148,6 +151,7 @@ a#redo {
     padding: 2em;
     font-family: sans-serif;
     font-size: 80%;
+    z-index: -1;
 }
 
 .fl {
@@ -165,4 +169,15 @@ a#redo {
 
 #trainer {
     margin: 0.5em 0;
+}
+
+.f-copyright {
+    display: block;
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    z-index: -1
 }

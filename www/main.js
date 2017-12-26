@@ -45,11 +45,49 @@ $(function () {
     };
 
     function submitStrokes() {
-        //var $submit = $('a#send'),
         var $latex = $('#eq-latex');
         var $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
         console.log(strokes);
+
+        algo_type = $("input[type='radio']:checked").val();
+        // console.log(algo_type);
+        if (algo_type == 'seq'){
+            req_url = "http://192.168.46.178:3680/math_recog";
+            trace_data = JSON.stringify({"pt_dat" : strokes});
+        }
+        else if (algo_type == 'det') {
+            req_url = "http://192.168.46.123:8900/math_recog/";
+            trace_data = JSON.stringify({"pt_dat" : strokes});
+        }
+        else if (algo_type == 'seq_nihan') {
+            req_url = "http://192.168.46.178:3685/math_recog/";
+            trace_data = JSON.stringify({"pt_dat" : strokes});
+        }
+        else if (algo_type == 'seq_open') {
+            // req_url = "http://101.132.130.125:8004/upload_task/";
+            req_url = "http://101.132.130.125:8000/v1/hwer/";
+            // req_url = "http://192.168.46.123:8004/upload_task/";
+            var pack_traces = new Array();
+            for (var str_idx = 0; str_idx < strokes.length; ++str_idx){
+                for (var i = 0; i < strokes[str_idx].length; ++i){
+                    pack_traces.push(strokes[str_idx][i][0]);
+                    pack_traces.push(strokes[str_idx][i][1]);
+                }
+                pack_traces.push(-10000);
+                pack_traces.push(-10000);
+            }
+            strokes = pack_traces;
+            trace_data = JSON.stringify({"pt_seq" : strokes});
+        }
+        else {
+            alert("TIPs: Please check the server type first.");
+            return -1;
+        }
+
+        if (algo_type == 'seq_open'){
+
+        }
         // Submit strokes in the required format.
         //strokes = transform(strokes);
         //traces = [];
@@ -59,18 +97,25 @@ $(function () {
         var submit_sync = function () {
             $.ajax({
                 type: 'POST',
-                url: "http://192.168.46.123:8900/send_pts/",
+                url: req_url,
+                // url: "http://192.168.46.178:3680/math_recog",
                 //contentType: "application/json; charset=utf-8",  //# 不需要！！！
                 dataType: "json",  // 这一条表示返回值的类型，不必须，且依据返回值类型而定。
                 async: true,
                 crossDomain:true,
                 // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
                 // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
-                data: JSON.stringify({"traces" : strokes}),
 
-                beforeSend: function(xhr) {
-                    $latex.empty();
-                    $render.empty();
+
+                data: trace_data, //JSON.stringify({"pt_seq" : strokes}),
+
+                // beforeSend: function(xhr) {
+                //     $latex.empty();
+                //     $render.empty();
+                // },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Server Internal error or check the server status!")
                 },
 
                 success: function (jsonResult, textStatus, jqXHR) {
@@ -78,8 +123,11 @@ $(function () {
                         $('.eq').html('<h2>Server not available.</h2><p>Please try again later. We apologize for the inconvenience.</p>');
                         return false;
                     }
-                    console.log(jsonResult);
-                    latex_str = jsonResult["result_latex"].toString() + '\n';
+                    if (algo_type == 'seq_open'){
+                        jsonResult = jsonResult['data'];
+                    }
+                    // console.log(jsonResult);
+                    latex_str = jsonResult["latex"].toString() + '\n';
                     // alert(jsonResult["result_latex"]);
                     // console.log(data);
                     $render.html('\\[' + latex_str + '\\]');
@@ -176,20 +224,6 @@ $(function () {
         e.preventDefault();
         $canvas.sketchable('redo');
     });
-
-
-
-    if (urlParam("train")) {
-        // Shortcut to clear canvas + submit strokes.
-        $(document).on("keydown", function (e) {
-            //if (e.ctrlKey && e.which == 65) { // This can be exhausting.
-            if (e.which == 45 || e.which == 96) { // Better be pressing a single key, e.g. INS.
-                e.preventDefault();
-                submitStrokes();
-                clearStrokes();
-            }
-        });
-    }
 
     // Render LaTeX math expressions on page load.
     MathJax.Hub.Config({showMathMenu: false});
