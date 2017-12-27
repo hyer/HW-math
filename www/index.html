@@ -37,6 +37,31 @@
         <!--});-->
     <!--</script>-->
 
+    <!--show tip-->
+    <script type="text/javascript">
+
+        function show_tip(mess){
+            $('#overlay').fadeIn('fast', function () {
+                $('#box').animate({ 'top': '150px' }, 500);
+                $("#mess").html(mess);
+                setTimeout("close_tip()", 2000);//2秒消失
+
+            });
+        }
+
+        function close_tip(){
+            $('#box').animate({ 'top': '-500px' }, 500, function () {
+                $('#overlay').fadeOut('fast');
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        show_tip("Tip：暂时不支持连笔书写。");
+    });
+    </script>
+
     <style type="text/css">.MathJax_Hover_Frame {
         border-radius: .25em;
         -webkit-border-radius: .25em;
@@ -945,6 +970,7 @@
         border: 1px solid
     }
     </style>
+
 </head>
 
 <body>
@@ -954,9 +980,34 @@
 </div>
 <div id="MathJax_Message" style="display: none;"></div>
 
-<div id="header">
-    <h1>Mathematical Expression Recognition</h1>
+<div id="title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="icon.png"  class="img" alt="AI-LAB.png" />
+
+
+            </div>
+            <div class="col-md-11">
+                <!--<span class="title">-->
+                <div class="head">
+                    <div class="title">
+                        Mathematical Expression Recognition
+                    </div>
+                    <div class="subtitle">
+                        ND人工智能实验室
+                    </div>
+                </div>
+
+                <!--</span>-->
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
 
 
 <div id="main-wrapper">
@@ -967,6 +1018,10 @@
             <!--<label>LaTeX code:</label>-->
             <!--<div class="result" id="eq-latex"></div>-->
         </div><!-- app -->
+
+        <div class="tip_msg">
+            Tip：暂时不支持连笔书写。
+        </div>
 
 
         <div class="app draw">
@@ -982,7 +1037,7 @@
                         <label class="radio-inline">
                             <input type="radio" name="algo-type" value="det" id="det">DET</label>
                         <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="seq_open" id="seq_open">SEQ-OPEN</label>
+                            <input type="radio" name="algo-type" value="seq_open" id="seq_open" checked="checked">SEQ-OPEN</label>
                     </div>
                     <div class="col-md-8">
                         <div class="controls">
@@ -1013,16 +1068,22 @@
         </div><!-- app -->
 
     </div><!--#main-->
-
-
-
 </div><!--#main-wrapper-->
 
+<!--<div class="overlay" id="overlay" style="display:none;"></div>-->
+<!--<div class="box" id="box">-->
+    <!--<div class="tip_msg">-->
+        <!--Tip：暂时不支持连笔书写。-->
+    <!--</div>-->
+    <!--<span class="boxclose" id="boxclose" onclick="close_tip();"></span>-->
+<!--</div>-->
+
+
 <!--<div id="footer">-->
-    <div class="f-copyright">
-        <p>Copyright 1999-2017 All rights reserved.</p>
-        <p>福建网龙计算机网络信息技术有限公司</p>
-    </div>
+<div class="f-copyright">
+    <p>Copyright 1999-2017 All rights reserved.</p>
+    <p>福建网龙计算机网络信息技术有限公司</p>
+</div>
 <!--</div>-->
 
 </body>

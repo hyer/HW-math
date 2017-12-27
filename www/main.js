@@ -1,4 +1,21 @@
 $(function () {
+    // function tishi(mess){
+    //     $('#overlay').fadeIn('fast', function () {
+    //         $('#box').animate({ 'top': '150px' }, 500);
+    //         $("#mess").html(mess);
+    //         setTimeout("tishiclose()",2000);//2秒消失，可以改动
+    //
+    //     });
+    // }
+    //
+    // function tishiclose(){
+    //     $('#box').animate({ 'top': '-500px' }, 500, function () {
+    //         $('#overlay').fadeOut('fast');
+    //     });
+    // }
+
+
+
     function post(URL, PARAMS) {
         var temp = document.createElement("form");
         temp.action = URL;
@@ -228,4 +245,5 @@ $(function () {
     // Render LaTeX math expressions on page load.
     MathJax.Hub.Config({showMathMenu: false});
     MathJax.Hub.Typeset();
+
 });
