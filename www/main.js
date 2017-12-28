@@ -65,13 +65,25 @@ $(function () {
         var $latex = $('#eq-latex');
         var $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
+        var pack_traces = new Array();
         console.log(strokes);
 
         algo_type = $("input[type='radio']:checked").val();
         // console.log(algo_type);
-        if (algo_type == 'seq'){
-            req_url = "http://192.168.46.178:3680/math_recog";
-            trace_data = JSON.stringify({"pt_dat" : strokes});
+        if (algo_type == 'det_open'){
+            req_url = "http://101.132.130.125:8000/v1/hwer_dy/";
+            // trace_data = JSON.stringify({"pt_dat" : strokes});
+
+            for (var str_idx = 0; str_idx < strokes.length; ++str_idx){
+                for (var i = 0; i < strokes[str_idx].length; ++i){
+                    pack_traces.push(strokes[str_idx][i][0]);
+                    pack_traces.push(strokes[str_idx][i][1]);
+                }
+                pack_traces.push(-10000);
+                pack_traces.push(-10000);
+            }
+            strokes = pack_traces;
+            trace_data = JSON.stringify({"pt_seq" : strokes});
         }
         else if (algo_type == 'det') {
             req_url = "http://192.168.46.123:8900/math_recog/";
@@ -85,7 +97,6 @@ $(function () {
             // req_url = "http://101.132.130.125:8004/upload_task/";
             req_url = "http://101.132.130.125:8000/v1/hwer/";
             // req_url = "http://192.168.46.123:8004/upload_task/";
-            var pack_traces = new Array();
             for (var str_idx = 0; str_idx < strokes.length; ++str_idx){
                 for (var i = 0; i < strokes[str_idx].length; ++i){
                     pack_traces.push(strokes[str_idx][i][0]);
@@ -102,9 +113,7 @@ $(function () {
             return -1;
         }
 
-        if (algo_type == 'seq_open'){
 
-        }
         // Submit strokes in the required format.
         //strokes = transform(strokes);
         //traces = [];
@@ -140,7 +149,7 @@ $(function () {
                         $('.eq').html('<h2>Server not available.</h2><p>Please try again later. We apologize for the inconvenience.</p>');
                         return false;
                     }
-                    if (algo_type == 'seq_open'){
+                    if ((algo_type == 'seq_open') || (algo_type == 'det_open')){
                         jsonResult = jsonResult['data'];
                     }
                     // console.log(jsonResult);
