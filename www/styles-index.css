@@ -5,6 +5,11 @@
 
 body {
     background-color: #EEE;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -93,7 +98,7 @@ h1, h2, h3, h4, h5 {
     position: relative;
     /*margin-left:-1em;*/
     /*margin: auto;*/
-    z-index: 2;
+    z-index: 1001;
     border: 2px solid #dadada;
 }
 
