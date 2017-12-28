@@ -43,7 +43,7 @@
         function show_tip(mess){
             $('#overlay').fadeIn('fast', function () {
                 $('#box').animate({ 'top': '150px' }, 500);
-                $("#mess").html(mess);
+                $("#mess").html('<p> + mess + <p/>');
                 setTimeout("close_tip()", 2000);//2秒消失
 
             });
@@ -56,11 +56,11 @@
         }
     </script>
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-        show_tip("Tip：暂时不支持连笔书写。");
-    });
-    </script>
+    <!--<script type="text/javascript">-->
+    <!--$(document).ready(function(){-->
+        <!--show_tip("Tip：暂时不支持连笔书写。");-->
+    <!--});-->
+    <!--</script>-->
 
     <style type="text/css">.MathJax_Hover_Frame {
         border-radius: .25em;
@@ -1015,8 +1015,9 @@
         <div class="app eq">
             <label>Recognition Result:</label>
             <div class="result" id="eq-render"></div>
-            <!--<label>LaTeX code:</label>-->
+            <label>Sym List:</label>
             <!--<div class="result" id="eq-latex"></div>-->
+            <div class="result" id="eq-syms"></div>
         </div><!-- app -->
 
         <div class="tip_msg">
@@ -1070,13 +1071,13 @@
     </div><!--#main-->
 </div><!--#main-wrapper-->
 
-<!--<div class="overlay" id="overlay" style="display:none;"></div>-->
-<!--<div class="box" id="box">-->
-    <!--<div class="tip_msg">-->
+<div class="overlay" id="overlay" style="display:none;"></div>
+<div class="box" id="box">
+    <div class="tip_msg" id="msg">
         <!--Tip：暂时不支持连笔书写。-->
-    <!--</div>-->
-    <!--<span class="boxclose" id="boxclose" onclick="close_tip();"></span>-->
-<!--</div>-->
+    </div>
+    <span class="boxclose" id="boxclose" onclick="close_tip();"></span>
+</div>
 
 
 <!--<div id="footer">-->

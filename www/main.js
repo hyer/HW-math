@@ -62,7 +62,8 @@ $(function () {
     };
 
     function submitStrokes() {
-        var $latex = $('#eq-latex');
+        // var $latex = $('#eq-latex');
+        var $labels = $('#eq-syms');
         var $render = $('#eq-render');
         var strokes = $canvas.sketchable('strokes');
         console.log(strokes);
@@ -145,11 +146,13 @@ $(function () {
                     }
                     // console.log(jsonResult);
                     latex_str = jsonResult["latex"].toString() + '\n';
+                    syms = jsonResult["labels"].toString() + '\n';
                     // alert(jsonResult["result_latex"]);
                     // console.log(data);
                     $render.html('\\[' + latex_str + '\\]');
-                    // $latex.html(latex_str);
+                    $labels.html(syms);
                     MathJax.Hub.Typeset();
+                    show_tip(syms);
                 }
             });
         };
