@@ -17,9 +17,9 @@ h1, h2, h3, h4, h5 {
     font-weight: normal;
 }
 
-#header, #main-wrapper {
+#header {
     margin: 1em 0;
-    text-align: center;
+
 }
 
 #sections {
@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5 {
     background-color: #FFF;
     /*border-top: 1px dashed #DDD;*/
     /*border-bottom: 1px dashed #DDD;*/
+    text-align: left;
     z-index: 999;
 }
 
@@ -73,6 +74,10 @@ h1, h2, h3, h4, h5 {
     font-size: 200%;
 }
 
+.result_gt {
+    font-size: 200%;
+}
+
 #query {
     font-size: 50%;
     padding: 0.5em;
@@ -82,7 +87,7 @@ h1, h2, h3, h4, h5 {
 
 .draw {
     margin-top: 2px;
-    width: 1000px;
+    /*width: 50px;*/
     /*margin: auto;*/
     margin-bottom: 1em;
 }
@@ -97,7 +102,8 @@ h1, h2, h3, h4, h5 {
 #drawing-canvas {
     position: relative;
     /*margin-left:-1em;*/
-    /*margin: auto;*/
+    margin: auto;
+    /*width: 200px;*/
     z-index: 1001;
     border: 2px solid #dadada;
 }
@@ -264,5 +270,6 @@ span.boxclose{
     font-family: Microsoft YaHei;
     color: #dd6423;
     text-align: center;
+    margin-top: 1em;
     /*font-size: 1em;*/
 }

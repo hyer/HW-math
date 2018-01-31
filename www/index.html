@@ -1005,68 +1005,95 @@
     </div>
 </div>
 
+<div class="tip_msg">
+    Tip：暂时不支持连笔书写。
+</div>
 
-<div id="main-wrapper">
-    <div id="main">
-        <div class="app eq">
-            <label>Recognition Result:</label>
-            <div class="result" id="eq-render"></div>
-            <!--<label>LaTeX code:</label>-->
-            <!--<div class="result" id="eq-latex"></div>-->
-        </div><!-- app -->
+<!--<div id="main-wrapper">-->
+    <!--<div id="main">-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="draw" id="draw">
+                <canvas id="drawing-canvas" width="800" height="400"></canvas>
 
-        <div class="tip_msg">
-            Tip：暂时不支持连笔书写。
-        </div>
+                <div class="container main-wrapper">
+                    <div class="row">
+                        <div class="col-md-5">
 
+                            <label class="radio-inline">
+                                <input type="radio" name="algo-type" value="ssd" id="ssd">SSD</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="algo-type" value="det" id="det">DET</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="algo-type" value="det_open" id="det_open">DET-OPEN</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="algo-type" value="seq_open" id="seq_open" checked="checked">SEQ-OPEN</label>
 
-        <div class="app draw">
-            <canvas id="drawing-canvas" width="950" height="400"></canvas>
+                        </div>
+                        <div class="col-md-7">
 
-            <div class="container main-wrapper">
-                <div class="row">
-                    <div class="col-md-5">
+                            <div class="controls">
+                                <div class="btn-group btn-group-lg">
+                                    <button href="http://cat.prhlt.upv.es/mer/#" id="undo" type="button"
+                                            class="btn btn-info">undo
+                                    </button>
+                                    <button href="http://cat.prhlt.upv.es/mer/#" id="redo" type="button"
+                                            class="btn btn-info">redo
+                                    </button>
+                                </div>
 
-                        <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="ssd" id="ssd">SSD</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="det" id="det">DET</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="det_open" id="det_open">DET-OPEN</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="seq_open" id="seq_open" checked="checked">SEQ-OPEN</label>
-
-                    </div>
-                    <div class="col-md-7">
-
-                        <div class="controls">
-                            <div class="btn-group btn-group-lg">
-                                <button href="http://cat.prhlt.upv.es/mer/#" id="undo" type="button"
-                                        class="btn btn-info">undo
-                                </button>
-                                <button href="http://cat.prhlt.upv.es/mer/#" id="redo" type="button"
-                                        class="btn btn-info">redo
-                                </button>
-                            </div>
-
-                            <div class="btn-group btn-group-lg">
-                                <button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button"
-                                        class="btn btn-warning">
-                                    clear
-                                </button>
-                                <button href="http://cat.prhlt.upv.es/mer/#" id="send" type="button"
-                                        class="btn btn-success">send
-                                </button>
+                                <div class="btn-group btn-group-lg">
+                                    <button href="http://cat.prhlt.upv.es/mer/#" id="clear" type="button"
+                                            class="btn btn-warning">
+                                        clear
+                                    </button>
+                                    <button href="http://cat.prhlt.upv.es/mer/#" id="send" type="button"
+                                            class="btn btn-success">send
+                                    </button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
+            </div><!-- app -->
+        </div>
+        <div class="col-md-3">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="latex_gt_str" placeholder="请输入Latex">
+                    </div>
+                    <div class="col-sm-4">
+                        <button href="http://cat.prhlt.upv.es/mer/#" id="render-gt" type="button"
+                                class="btn btn-success">渲染</button>
+                    </div>
+                </div>
+            </form>
 
-            </div>
-        </div><!-- app -->
+            <div class="eq">
+                <label>正确答案:</label>
+                <div class="result_gt" id="eq-gt-render"></div>
 
-    </div><!--#main-->
+            </div><!-- app -->
+
+
+
+            <div class="eq">
+                <label>识别结果:</label>
+                <div class="result" id="eq-render"></div>
+                <!--<label>LaTeX code:</label>-->
+                <!--<div class="result" id="eq-latex"></div>-->
+            </div><!-- app -->
+
+            <button href="http://cat.prhlt.upv.es/mer/#" id="show-bbox" type="button"
+                    class="btn btn-success">显示矩形框</button>
+
+        </div>
+
+    <!--</div>&lt;!&ndash;#main&ndash;&gt;-->
 </div><!--#main-wrapper-->
 
 <!--<div class="overlay" id="overlay" style="display:none;"></div>-->

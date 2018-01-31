@@ -59,7 +59,20 @@ $(function () {
     function clearStrokes() {
         $canvas.sketchable('clear');
         $('.result').empty();
-    };
+    }
+
+    function renderGTLatex() {
+        var $render_gt = $('#eq-gt-render');
+        latex_str_gt = $('#latex_gt_str').val();
+        $render_gt.html('\\[' + latex_str_gt + '\\]');
+        MathJax.Hub.Typeset();
+    }
+    
+    function showBbox() {
+        for (var i = 0; i < 1; ++i) {
+            $("#sym1").toggle();
+        }
+    }
 
     function submitStrokes() {
         var $latex = $('#eq-latex');
@@ -153,10 +166,27 @@ $(function () {
                         jsonResult = jsonResult['data'];
                     }
                     // console.log(jsonResult);
-                    latex_str = jsonResult["latex"].toString() + '\n';
+                    var latex_str = jsonResult["latex"].toString() + '\n';
                     // alert(jsonResult["result_latex"]);
                     // console.log(data);
                     $render.html('\\[' + latex_str + '\\]');
+
+                    // bbox results
+                    boxes = jsonResult["boxes"];
+                    var box = [10, 100, 300, 300]; // top left width height
+                    sym_ids = new Array(1);
+                    box_num = 1;
+                    sym1 = $('<div style="width: 100px; height: 200px; border: 2px solid rgba(138, 233, 255, 0.99);"></div>');
+                    sym_ids.push(sym1);
+                    sym1.appendTo('#draw');
+                    sym1.css({
+                        "left": "115px",  //boostrap 的container的row缩进15px，所以这里要加上15px， 画布上就是（100px， 100px）
+                        "top": "100px",
+                        "position": "absolute"
+                    });
+                    sym1.attr("id", "sym1");
+                    $("#sym1").hide();
+
                     // $latex.html(latex_str);
                     MathJax.Hub.Typeset();
                 }
@@ -232,6 +262,11 @@ $(function () {
 
 
     $('#clear').click(function (e) {
+        //TODO 删除旧的box 变量
+        for (var i = 0; i < 1; ++i) {
+            $("#sym1").remove();
+        }
+
         e.preventDefault();
         clearStrokes();
     });
@@ -249,6 +284,16 @@ $(function () {
     $('#redo').click(function (e) {
         e.preventDefault();
         $canvas.sketchable('redo');
+    });
+
+    $('#render-gt').click(function (e) {
+        e.preventDefault();
+        renderGTLatex();
+    });
+
+    $('#show-bbox').click(function (e) {
+        e.preventDefault();
+        showBbox();
     });
 
     // Render LaTeX math expressions on page load.

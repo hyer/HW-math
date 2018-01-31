@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>增加删除DIV的JS写法</title>
+</head>
+
+<body>
+<div id="main">
+    <div id="box">111</div>
+    <div class="box2">222</div>
+</div>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var main = document.getElementById("main");
+    var newMask = document.createElement("div");
+    newMask.id ="newMask";
+    main.appendChild(newMask);
+    if(box){
+        box.parentNode.removeChild(box);
+    }
+    else{
+        alert("没有这个div");
+    }
+</script>
+</body>
+</html>
