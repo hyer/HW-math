@@ -86,11 +86,11 @@ $(function () {
             trace_data = JSON.stringify({"pt_seq" : strokes});
         }
         else if (algo_type == 'det') {
-            req_url = "http://192.168.46.123:8900/math_recog/";
+            req_url = "http://192.168.46.123:8989/math_recog/";
             trace_data = JSON.stringify({"pt_dat" : strokes});
         }
-        else if (algo_type == 'seq_nihan') {
-            req_url = "http://192.168.46.178:3685/math_recog/";
+        else if (algo_type == 'ssd') {
+            req_url = "http://192.168.46.123:8900/math_recog/";
             trace_data = JSON.stringify({"pt_dat" : strokes});
         }
         else if (algo_type == 'seq_open') {

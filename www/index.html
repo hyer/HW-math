@@ -9,7 +9,7 @@
     <meta name="Description"
           content="A demo of our award.winning, state-of-the-art Mathematical Expression Recognition system.">
     <meta name="Keywords" content="mer, math, maths, handwriting, recognition">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
 
     <title>Mathematical Expression Recognition</title>
 
@@ -29,37 +29,37 @@
 
     <!--ctrol stroll bar-->
     <!--<script type="text/javascript">-->
-        <!--$(document).ready(function(){-->
-            <!--$(document.body).css({-->
-                <!--"overflow-x":"hidden",-->
-                <!--"overflow-y":"hidden"-->
-            <!--});-->
-        <!--});-->
+    <!--$(document).ready(function(){-->
+    <!--$(document.body).css({-->
+    <!--"overflow-x":"hidden",-->
+    <!--"overflow-y":"hidden"-->
+    <!--});-->
+    <!--});-->
     <!--</script>-->
 
     <!--show tip-->
     <script type="text/javascript">
 
-        function show_tip(mess){
+        function show_tip(mess) {
             $('#overlay').fadeIn('fast', function () {
-                $('#box').animate({ 'top': '150px' }, 500);
+                $('#box').animate({'top': '150px'}, 500);
                 $("#mess").html(mess);
                 setTimeout("close_tip()", 2000);//2秒消失
 
             });
         }
 
-        function close_tip(){
-            $('#box').animate({ 'top': '-500px' }, 500, function () {
+        function close_tip() {
+            $('#box').animate({'top': '-500px'}, 500, function () {
                 $('#overlay').fadeOut('fast');
             });
         }
     </script>
 
     <script type="text/javascript">
-    $(document).ready(function(){
-        show_tip("Tip：暂时不支持连笔书写。");
-    });
+        $(document).ready(function () {
+            show_tip("Tip：暂时不支持连笔书写。");
+        });
     </script>
 
     <style type="text/css">.MathJax_Hover_Frame {
@@ -984,7 +984,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-1">
-                <img src="icon.png"  class="img" alt="AI-LAB.png" />
+                <img src="icon.png" class="img" alt="AI-LAB.png"/>
 
 
             </div>
@@ -1004,10 +1004,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 <div id="main-wrapper">
@@ -1032,7 +1028,7 @@
                     <div class="col-md-5">
 
                         <label class="radio-inline">
-                            <input type="radio" name="algo-type" value="seq_nihan" id="seq_nihan">SEQ_NIHAN</label>
+                            <input type="radio" name="algo-type" value="ssd" id="ssd">SSD</label>
                         <label class="radio-inline">
                             <input type="radio" name="algo-type" value="det" id="det">DET</label>
                         <label class="radio-inline">
@@ -1075,10 +1071,10 @@
 
 <!--<div class="overlay" id="overlay" style="display:none;"></div>-->
 <!--<div class="box" id="box">-->
-    <!--<div class="tip_msg">-->
-        <!--Tip：暂时不支持连笔书写。-->
-    <!--</div>-->
-    <!--<span class="boxclose" id="boxclose" onclick="close_tip();"></span>-->
+<!--<div class="tip_msg">-->
+<!--Tip：暂时不支持连笔书写。-->
+<!--</div>-->
+<!--<span class="boxclose" id="boxclose" onclick="close_tip();"></span>-->
 <!--</div>-->
 
 
