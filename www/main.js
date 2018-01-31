@@ -69,9 +69,13 @@ $(function () {
     }
     
     function showBbox() {
-        for (var i = 0; i < 1; ++i) {
-            $("#sym1").toggle();
-        }
+        // for (var i = 0; i < 1; ++i) {
+        //     $("#sym1").toggle();
+        // }
+        var $abc = $("div.bbox");
+        $abc.each(function(){
+            $(this).toggle();
+        });
     }
 
     function submitStrokes() {
@@ -176,16 +180,30 @@ $(function () {
                     var box = [10, 100, 300, 300]; // top left width height
                     sym_ids = new Array(1);
                     box_num = 1;
-                    sym1 = $('<div style="width: 100px; height: 200px; border: 2px solid rgba(138, 233, 255, 0.99);"></div>');
+
+                    // 删除旧的bbox
+                    var $abc = $("div.bbox");
+                    $abc.each(function(){
+                        $(this).remove();
+                    });
+
+                    // 创建新的bbox div
+                    sym1 = $('<div class="bbox" style="width: 100px; height: 200px; border: 2px solid rgba(138, 233, 255, 0.99);"></div>');
                     sym_ids.push(sym1);
                     sym1.appendTo('#draw');
                     sym1.css({
                         "left": "115px",  //boostrap 的container的row缩进15px，所以这里要加上15px， 画布上就是（100px， 100px）
                         "top": "100px",
                         "position": "absolute"
+
                     });
                     sym1.attr("id", "sym1");
-                    $("#sym1").hide();
+                    // $("#sym1").hide();
+
+                    var $abc = $("div.bbox");
+                    $abc.each(function(){
+                        $(this).hide();
+                    });
 
                     // $latex.html(latex_str);
                     MathJax.Hub.Typeset();
@@ -263,9 +281,13 @@ $(function () {
 
     $('#clear').click(function (e) {
         //TODO 删除旧的box 变量
-        for (var i = 0; i < 1; ++i) {
-            $("#sym1").remove();
-        }
+        // for (var i = 0; i < 1; ++i) {
+        //     $("#sym1").remove();
+        // }
+        var $abc = $("div.bbox");
+        $abc.each(function(){
+            $(this).remove();
+        });
 
         e.preventDefault();
         clearStrokes();
