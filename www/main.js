@@ -177,9 +177,9 @@ $(function () {
 
                     // bbox results
                     boxes = jsonResult["boxes"];
-                    var box = [10, 100, 300, 300]; // top left width height
-                    sym_ids = new Array(1);
-                    box_num = 1;
+                    // var box = [10, 100, 300, 300]; // top left width height
+                    box_num = boxes.length;
+                    // sym_ids = new Array(box_num);
 
                     // 删除旧的bbox
                     var $abc = $("div.bbox");
@@ -187,18 +187,39 @@ $(function () {
                         $(this).remove();
                     });
 
-                    // 创建新的bbox div
-                    sym1 = $('<div class="bbox" style="width: 100px; height: 200px; border: 2px solid rgba(138, 233, 255, 0.99);"></div>');
-                    sym_ids.push(sym1);
-                    sym1.appendTo('#draw');
-                    sym1.css({
-                        "left": "115px",  //boostrap 的container的row缩进15px，所以这里要加上15px， 画布上就是（100px， 100px）
-                        "top": "100px",
-                        "position": "absolute"
 
-                    });
-                    sym1.attr("id", "sym1");
-                    // $("#sym1").hide();
+                    var canv_W = 800;
+                    var canv_H = 400;
+                    var im_size = jsonResult["input_size"];
+                    for (var box_idx = 0; box_idx < box_num; ++box_idx){
+                        // 创建新的bbox div
+                        var im_x1 = boxes[box_idx][0];
+                        var im_y1 = boxes[box_idx][1];
+                        var im_x2 = boxes[box_idx][2];
+                        var im_y2 = boxes[box_idx][3];
+
+                        var x1 = canv_W * im_x1 / im_size;
+                        var x2 = canv_W * im_x2 / im_size;
+                        var y1 = canv_W * im_y1 / im_size - (canv_W - canv_H)/2;
+                        var y2 = canv_W * im_y2 / im_size - (canv_W - canv_H)/2;
+
+
+                        var left = x1;
+                        var top = y1;
+                        var w = x2 - x1;
+                        var h = y2 - y1;
+
+                        box = $('<div class="bbox" style="border: 2px solid rgba(138, 233, 255, 0.99);"></div>');
+                        box.appendTo('#draw');
+                        box.css({
+                            "left": (left + 15).toString() +"px",  //boostrap 的container的row缩进15px，所以这里要加上15px， 画布上就是（100px， 100px）
+                            "top": top.toString() +"px",
+                            "width": w.toString() +"px",
+                            "height": h.toString() +"px",
+                            "position": "absolute"
+                        });
+
+                    }
 
                     var $abc = $("div.bbox");
                     $abc.each(function(){
